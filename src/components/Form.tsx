@@ -15,6 +15,7 @@ export default function Form() {
 
     const form = e.currentTarget;
     const input = form.elements.namedItem("entry") as HTMLInputElement;
+    console.log(input.value);
 
     const res = await fetch("/api/posts", {
       body: JSON.stringify({

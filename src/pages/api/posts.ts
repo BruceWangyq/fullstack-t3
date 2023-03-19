@@ -25,6 +25,22 @@ export default async function handler(
     return res.status(200).json({ error: null });
   }
 
+  if (req.method === "PUT") {
+    await prisma.posts.update({
+      where: {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+        id: req.body.id,
+      },
+      data: {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+        title: req.body.title,
+        authorId: id,
+      },
+    });
+
+    return res.status(200).json({ error: null });
+  }
+
   if (req.method === "DELETE") {
     await prisma.posts.delete({
       where: {
